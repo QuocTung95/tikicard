@@ -25,7 +25,7 @@ function MainCard () {
     <div id="wraper-game">
       {
         cards && cards.length>0 && cards.map((el, index)=>{
-          var image = "../image/1.jpg"
+          var image = "src/image/1.jpg"
           return(
             <Fragment>
               {

@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
         }
       })
       cards.forEach(el=>{
-        if(el.open == true){
+        if(el.open === true){
           itemOpen ++
         }
       })
@@ -63,11 +63,11 @@ const reducer = (state = initialState, action) => {
           level: action.level,
           time
         }
-      case COMPARE_CARD:
-        var cards = state.cards
+    case COMPARE_CARD:
+        
 
-        if( state.itemOpen == 2 && state.currentCard &&  action.cardCompare &&  action.cardCompare.name !== state.currentCard.name){
-          
+        if( state.itemOpen === 2 && state.currentCard &&  action.cardCompare &&  action.cardCompare.name !== state.currentCard.name){
+          // var cards = state.cards
           var currentCard = null
           currentCard = null
           cards.forEach(el=>{
@@ -79,13 +79,11 @@ const reducer = (state = initialState, action) => {
             currentCard,
             itemOpen: 0
           }
-        }else  if(state.itemOpen == 2 && state.currentCard && action.cardCompare && action.cardCompare.name==state.currentCard.name){
+        }else  if(state.itemOpen === 2 && state.currentCard && action.cardCompare && action.cardCompare.name===state.currentCard.name){
           //phần này là match
-          // cards = state.cards.filter(el=>{
-          //   return el.name !== action.cardCompare.name
-          // })
+          var cards = state.cards
           cards.forEach(el=>{
-            if(el.name == action.cardCompare.name){
+            if(el.name === action.cardCompare.name){
               el.hide = true
               el.open = false
             }

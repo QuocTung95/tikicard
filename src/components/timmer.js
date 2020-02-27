@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 export default class Loading extends Component {
     constructor(props){
         super(props)
-        console.log('this.props.time', this.props.time)
         this.state={
             timer: null,
             counter: 5,
