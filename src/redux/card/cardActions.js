@@ -1,5 +1,5 @@
 
-import {CLICK_CARD, SELECT_LEVEL, COMPARE_CARD, TIME_OUT} from './cardTypes'
+import {CLICK_CARD, SELECT_LEVEL, COMPARE_CARD, TIME_OUT, PLAY_AGAIN} from './cardTypes'
 
 export const clickCard = card => {
   return {
@@ -25,6 +25,12 @@ export const selectLevel = level => {
 export const timeOut = () => {
     return{
       type: TIME_OUT
+    }
+
+}
+export const playAgain = () => {
+    return{
+      type: PLAY_AGAIN
     }
 
 }

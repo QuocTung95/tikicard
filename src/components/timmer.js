@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 export default class Loading extends Component {
     constructor(props){
         super(props)
         this.state={
             timer: null,
-            counter: 5,
+            counter: this.props.time,
+            totaltime: this.props.time
             
         }
     }
@@ -13,16 +13,18 @@ export default class Loading extends Component {
         let timer = setInterval(this.tick, 1000);
         this.setState({timer});
       }
-    componentWillUnmount() {
-        this.clearInterval(this.state.timer);
-      }
-
+    clearTime = () =>{
+      clearInterval(this.state.timer)
+    }
     tick = ()=> {
         this.setState({
-          counter: this.state.counter--
+          counter: this.state.counter - 1
         },()=>{
             var {counter} = this.state
-            if(counter === 0){
+            var {count, allPairs} = this.props
+            if(count === allPairs){
+              this.clearTime()
+            }else if(counter === 0){
                 const {timeOut} = this.props
                 timeOut && timeOut()
             }
@@ -30,10 +32,15 @@ export default class Loading extends Component {
       }
     render() {
         var counter = this.state.counter
-        
+        var totaltime = this.state.totaltime
+        var width = ((counter)/totaltime)*100 
+        var color = width > 50 ? 'dodgerblue' :  'yellow' 
+        if(width < 25){
+            color = 'red'
+        }
         return(
 
-      <div>Loading{"...".substr(0, counter % 3 + 1)}</div>
+      <div className="timmer" style={{width: width + '%', backgroundColor: color}}></div>
 
         )
     }
