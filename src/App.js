@@ -1,16 +1,21 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import './App.css'
-import store from './redux/store'
-import UsersContainer from './components/CardContainer'
+import React, {Fragment} from 'react'
+import Header from './components/header'
+import NewInHome from './components/newsInHome/index'
+import IntroDuce from './components/introduce/'
+
+
 
 function App () {
   return (
-    <Provider store={store}>
+    <Fragment>
       <div className='App'>
-        <UsersContainer />
+        <Header/>
+        <div className="main-content">
+          <NewInHome />
+          <IntroDuce/>
+        </div>
       </div>
-    </Provider>
+    </Fragment>
   )
 }
 
